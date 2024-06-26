@@ -3,13 +3,13 @@ function getComputerChoice() {
 
     switch (randomNum) {
         case 1:
-            /*console.log('Computer Plays: rock');*/
+            console.log('Computer Plays: rock');
             return 'Rock';
         case 2:
-            /*console.log('Computer Plays: Paper');*/
+            console.log('Computer Plays: Paper');
             return 'Paper';
         case 3:
-            /*console.log('Computer Plays: Scissors');*/
+            console.log('Computer Plays: Scissors');
             return 'Scissors';
     }
 }
@@ -20,17 +20,14 @@ function getHumanChoice() {
 
     if (choiceCase === 'rock' ||
         choiceCase === 'paper' ||
-        choiceCase === 'Scissors'
+        choiceCase === 'scissors'
     ) {
-        /*console.log(`Human Plays: ${choiceCase}`);*/
+        console.log(`Human Plays: ${choiceCase}`);
         return choiceCase;
     } else {
         getHumanChoice();
     }
 }
-
-let humanScore = 0;
-let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === 'rock' && computerChoice === 'Paper') {
@@ -57,7 +54,24 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
+let humanScore = 0;
+let computerScore = 0;
 
-playRound(humanChoice, computerChoice);
+function playGame() {
+
+    while (humanScore + computerScore < 5) {
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+
+        playRound(humanChoice, computerChoice);
+        console.log(`Human Score: ${humanScore}   Computer Score: ${computerScore}`);
+    }
+
+    if (humanScore > computerScore) {
+        console.log('WINNER: Human!');
+    } else {
+        console.log('WINNER: Computer!');
+    }
+}
+
+playGame();
