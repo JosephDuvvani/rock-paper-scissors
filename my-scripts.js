@@ -11,4 +11,16 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice());
+function getHumanChoice() {
+    const humanChoice = prompt('Pick \'Rock\', \'Paper\', or \'Scissors\'');
+    const choiceCase = humanChoice.toLowerCase();
+
+    if (choiceCase === 'rock' ||
+        choiceCase === 'paper' ||
+        choiceCase === 'Scissors'
+    ) {
+        return choiceCase;
+    } else {
+        getHumanChoice();
+    }
+}
