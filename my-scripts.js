@@ -96,3 +96,14 @@ function winner() {
         return 'WINNER: Computer!!!'
     }
 }
+
+const startOver = document.querySelector('#restart-game');
+
+startOver.addEventListener('click', () => {
+    humanScore = 0;
+    computerScore = 0;
+    scoreUpdate();
+    results.textContent = '';
+    state.textContent = '';
+});
+
