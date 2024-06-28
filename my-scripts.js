@@ -14,21 +14,6 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    const humanChoice = prompt('Pick \'Rock\', \'Paper\', or \'Scissors\'');
-    const choiceCase = humanChoice.toLowerCase();
-
-    if (choiceCase === 'rock' ||
-        choiceCase === 'paper' ||
-        choiceCase === 'scissors'
-    ) {
-        console.log(`Human Plays: ${choiceCase}`);
-        return choiceCase;
-    } else {
-        getHumanChoice();
-    }
-}
-
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === 'rock' && computerChoice === 'Paper') {
         computerScore++;
@@ -54,24 +39,25 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
+const btn = document.querySelector('div');
+
+btn.addEventListener('click', (e) => {
+    let targ = e.target;
+
+    switch (targ.id) {
+        case 'rock-btn':
+            playRound('rock', getComputerChoice());
+            break;
+        case 'paper-btn':
+            playRound('paper', getComputerChoice());
+            break;
+        case 'scissors-btn':
+            playRound('scissors', getComputerChoice());
+            break;
+    }
+});
+
+
+
 let humanScore = 0;
 let computerScore = 0;
-
-function playGame() {
-
-    while (humanScore + computerScore < 5) {
-        const humanChoice = getHumanChoice();
-        const computerChoice = getComputerChoice();
-
-        playRound(humanChoice, computerChoice);
-        console.log(`Human Score: ${humanScore}   Computer Score: ${computerScore}`);
-    }
-
-    if (humanScore > computerScore) {
-        console.log('WINNER: Human!');
-    } else {
-        console.log('WINNER: Computer!');
-    }
-}
-
-playGame();
